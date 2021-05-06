@@ -16,6 +16,7 @@ import org.apache.lucene.search.Query;
 import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.search.similarities.BM25Similarity;
+import org.apache.lucene.search.similarities.ClassicSimilarity;
 import org.apache.lucene.store.FSDirectory;
 
 /**
@@ -32,7 +33,7 @@ public class SearcherDemo {
             //Access the index using indexReaderFSDirectory.open(Paths.get(index))
             IndexReader indexReader = DirectoryReader.open(FSDirectory.open(Paths.get(indexLocation))); //IndexReader is an abstract class, providing an interface for accessing an index.
             IndexSearcher indexSearcher = new IndexSearcher(indexReader); //Creates a searcher searching the provided index, Implements search over a single IndexReader.
-            indexSearcher.setSimilarity(new BM25Similarity());
+            indexSearcher.setSimilarity(new ClassicSimilarity());
             
             //Search the index using indexSearcher
             search(indexSearcher, field);
@@ -74,7 +75,7 @@ public class SearcherDemo {
                 //display results
                 for(int i=0; i<hits.length; i++){
                     Document hitDoc = indexSearcher.doc(hits[i].doc);
-                    System.out.println("\tScore "+hits[i].score +"\ttitle="+hitDoc.get("title")+"\tcaption:"+hitDoc.get("caption")+"\tmesh:"+hitDoc.get("mesh"));
+                    System.out.println("\tscore "+hits[i].score +"\tid "+hitDoc.get("id"));
                 }
                 
                 System.out.println("Enter query or 'q' to quit: ");

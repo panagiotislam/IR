@@ -6,26 +6,39 @@ package txtparsing;
  */
 public class MyDoc {
 
+    private int id;
     private String title;
-    private String caption;
-    private String mesh;
+    private String author;
+    private String b;
+    private String body;
 
-    public MyDoc(String title, String caption, String mesh) {
+    public MyDoc(int id, String title, String author, String b, String body) {
+        this.id = id;
         this.title = title;
-        this.caption = caption;
-        this.mesh = mesh;
+        this.author = author;
+        this.b = b;
+        this.body = body;
     }
 
     @Override
     public String toString() {
         String ret = "MyDoc{"
+                + "\n\tId: " + id
                 + "\n\tTitle: " + title
-                + "\n\tCaption: " + caption
-                + "\n\tMesh: " + mesh;                
+                + "\n\tAuthor: " + author
+                + "\n\tB: " + b
+                + "\n\tBody: " + body;
         return ret + "\n}";
     }
 
-    //---- Getters & Setters definition ----
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -34,19 +47,27 @@ public class MyDoc {
         this.title = title;
     }
 
-    public String getCaption() {
-        return caption;
+    public String getAuthor() {
+        return author;
     }
 
-    public void setCaption(String caption) {
-        this.caption = caption;
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
-    public String getMesh() {
-        return mesh;
+    public String getB() {
+        return b;
     }
 
-    public void setMesh(String mesh) {
-        this.mesh = mesh;
+    public void setB(String b) {
+        this.b = b;
+    }
+
+    public String getBody() {
+        return body;
+    }
+
+    public void setBody(String body) {
+        this.body = body;
     }
 }

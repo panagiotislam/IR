@@ -11,6 +11,7 @@ import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.IndexWriterConfig.OpenMode;
 import org.apache.lucene.index.IndexWriterConfig;
 import org.apache.lucene.search.similarities.BM25Similarity;
+import org.apache.lucene.search.similarities.ClassicSimilarity;
 import org.apache.lucene.search.similarities.Similarity;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
@@ -36,7 +37,7 @@ public class IndexerDemo {
      */
     public IndexerDemo() throws Exception{
         
-        String txtfile =  "docs//mydocs.txt"; //txt file to be parsed and indexed, it contains one document per line
+        String txtfile =  "docs/cran.all.1400"; //txt file to be parsed and indexed, it contains one document per line
         String indexLocation = ("index"); //define were to store the index        
         
         Date start = new Date();
@@ -47,7 +48,7 @@ public class IndexerDemo {
             // define which analyzer to use for the normalization of documents
             Analyzer analyzer = new EnglishAnalyzer();
             // define retrieval model 
-            Similarity similarity = new BM25Similarity();
+            Similarity similarity = new ClassicSimilarity();
             // configure IndexWriter
             IndexWriterConfig iwc = new IndexWriterConfig(analyzer);
             iwc.setSimilarity(similarity);
@@ -94,13 +95,17 @@ public class IndexerDemo {
             Document doc = new Document();
             
             // create the fields of the document and add them to the document
+            StoredField id = new StoredField("id", mydoc.getId());
+            doc.add(id);
             StoredField title = new StoredField("title", mydoc.getTitle());
             doc.add(title);
-            StoredField caption = new StoredField("caption", mydoc.getCaption());
-            doc.add(caption);
-            StoredField mesh = new StoredField("mesh", mydoc.getMesh());
-            doc.add(mesh);
-            String fullSearchableText = mydoc.getTitle() + " " + mydoc.getCaption() + " " + mydoc.getMesh();            
+            StoredField author = new StoredField("author", mydoc.getAuthor());
+            doc.add(author);
+            StoredField b = new StoredField("b", mydoc.getB());
+            doc.add(b);
+            StoredField body = new StoredField("body", mydoc.getB());
+            doc.add(body);
+            String fullSearchableText = mydoc.getId() + " " + mydoc.getTitle() + " " + mydoc.getAuthor() + " " + mydoc.getB() + " " + mydoc.getBody();
             TextField contents = new TextField("contents", fullSearchableText, Field.Store.NO);
             doc.add(contents);
             

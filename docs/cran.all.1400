@@ -3041,6 +3041,7 @@ properties of the confluent hypergeometric function .
 .A
 a. d. macdonald
 .B
+
 .W
 properties of the confluent hypergeometric function .
 the confluent hypergeometric functions have proved useful in many
@@ -4335,6 +4336,7 @@ on the flow of compressible fluid past an obstacle .
 .A
 lord rayleigh, o.m., f.r.s.
 .B
+
 .W
 on the flow of compressible fluid past an obstacle .
 it is well known that according to classical hydrodynamics a steady
@@ -4977,6 +4979,7 @@ on the sudden contact between a hot gas and a cold solid .
 .A
 j. f. clarke, b.sc., ph.d., a.f.r.ae.s.
 .B
+
 .W
 on the sudden contact between a hot gas and a cold solid .
 the flow induced by the sudden contact between a semi-infinite expanse
@@ -5483,6 +5486,7 @@ aerodynamic research .
 .A
 dean r. chapman
 .B
+
 .W
 some possibilities of using gas mixtures other than in
 aerodynamic research .
@@ -6714,6 +6718,7 @@ g. a. allcock, a.m.i.e.e., a.m.brit.i.r.e.
 p. l. tanner, m.sc. (eng), grad. i.e.e.
 k. r. mclachlan, a.m.brit. i.r.e.
 .B
+
 .W
 a general purpose analogue correlator for the analysis of
 random noise signals .
@@ -6944,6 +6949,7 @@ navier-stokes solutions at large distances from a finite body .
 .A
 i-dee chang
 .B
+
 .W
 navier-stokes solutions at large distances from a finite body .
 this paper is concerned with a theoretical investigation of the flow
@@ -8542,7 +8548,9 @@ is suggested .
 .T
 higher order approximations for relaxation oscillations .
 .A
+
 .B
+
 .W
 higher order approximations for relaxation oscillations .
 the problem of solving asymptotic developments for all quantities
@@ -10286,7 +10294,9 @@ static pressure distributions at the plate surface .
 .T
 measurements of turbulent friction on a smooth flat plate in supersonic .
 .A
+
 .B
+
 .W
 measurements of turbulent friction on a smooth flat plate in supersonic .
   direct measurements of supersonic local skin friction, using the
@@ -11714,7 +11724,9 @@ nitrogen, oxygen, and steam .
 .T
 on the behaviour of boundary layers at supersonic speeds .
 .A
+
 .B
+
 .W
 on the behaviour of boundary layers at supersonic speeds .
 this paper considers the implications of recent advances in knowledge of
@@ -11852,6 +11864,7 @@ edges elastically restrained against rotation .
 .A
 batdorf,s.b. and houbolt,j.c.
 .B
+
 .W
 critical combinations of shear and transverse direct
 stress for an infinitely long flat plate with
@@ -12954,7 +12967,9 @@ graphically as functions of .
 .T
 the influence of two-dimensional stream shear on airfoil maximum lift .
 .A
+
 .B
+
 .W
 the influence of two-dimensional stream shear on airfoil maximum lift .
 the cornell aeronautical laboratory is conducting a program of
@@ -13344,6 +13359,7 @@ visualization in the 3ft tunnel at rae bedford.
 .A
 mcgregor,i.
 .B
+
 .W
 development of the vapour screen method of flow
 visualization in the 3ft tunnel at rae bedford.
@@ -13469,14 +13485,20 @@ necessary to obtain more correct
 results have been discussed .
 .I 471
 .T
+
 .A
+
 .B
+
 .W
+
 .I 472
 .T
 waves in supersonic flow .
 .A
+
 .B
+
 .W
 waves in supersonic flow .
 in this chapter we shall mainly consider problems of steady, two-
@@ -13493,7 +13515,9 @@ the subsonic case .
 .T
 freeman method .
 .A
+
 .B
+
 .W
 freeman method .
 the freeman method (ref. 26) is similar to
@@ -13513,6 +13537,7 @@ laminar mixing of a compressible fluid .
 .A
 dean r. chapman
 .B
+
 .W
 laminar mixing of a compressible fluid .
 a theoretical investigation of the velocity profiles for laminar
@@ -15206,6 +15231,7 @@ aerofoils in hypersonic flow .
 .A
 r. a. east
 .B
+
 .W
 a theoretical and experimental study of oscillating wedge shaped
 aerofoils in hypersonic flow .
@@ -15613,6 +15639,7 @@ statistics and gross radial growth behind hypervelocity object.
 .A
 slattery,r.e. and clay,w.g.
 .B
+
 .W
 experimental measurements of turbulent transition motion,
 statistics and gross radial growth behind hypervelocity object.
@@ -16528,6 +16555,7 @@ temperature field .
 .T
 compressor operation with one or more blade rows stalled .
 .A
+
 .B
 naca rm e56b03b, 1956 . chapter xiii
 .W
@@ -16566,7 +16594,9 @@ adjustable blades is included .
 .T
 some stall and surge phenomena in axial flow compressors .
 .A
+
 .B
+
 .W
 some stall and surge phenomena in axial flow compressors .
 observations of rotating stall have shown that a wide variety
@@ -16952,6 +16982,7 @@ part ii. heater performance .
 .A
 j. f. w. crane
 .B
+
 .W
 the 7 in. x 7 in. hypersonic wind tunnel at r.a.e. farnborough
 part ii. heater performance .
@@ -16980,6 +17011,7 @@ part iii - calibration of the flow in the working section .
 .A
 j. f. w. crane
 .B
+
 .W
 the 7 in. x 7 in. hypersonic wind tunnel at r.a.e., farnborough
 part iii - calibration of the flow in the working section .
@@ -18962,6 +18994,7 @@ experiments .
 methods for calculating the lift distribution of wings /subsonic
 lifting surface theory/ .
 .A
+
 .B
 r + m 2884, r.a.e. rep. aero. 2353. a.r.c. 13,439. january 1950 .
 .W
@@ -19414,6 +19447,7 @@ calculation procedure for thermodynamic transport, and flow properties
 of the combustion products of a hydrocarbon fuel mixture burned in air
 with results for ethylene-air and methane-air mixtures .
 .A
+
 .B
 nasa tn d-914, 1962 .
 .W
@@ -19466,6 +19500,7 @@ investigation of jet effects on a flat surface downstream of the exit of
 .A
 bressette, w.e. and leiss, a.
 .B
+
 .W
 investigation of jet effects on a flat surface downstream of the exit of
  a simulated turbojet nacelle at a free-stream mach number of 1.39 .
@@ -21462,6 +21497,7 @@ shells under bending.
 .A
 weingarten,v.i.
 .B
+
 .W
 effects of internal pressure on the buckling of circular-cylindrical
 shells under bending.
@@ -21580,7 +21616,9 @@ experimentally determined transition point .
 mathematical techniques applying to the thermal fatigue behaviour
 of high temperature alloys .
 .A
+
 .B
+
 .W
 mathematical techniques applying to the thermal fatigue behaviour
 of high temperature alloys .
@@ -21792,7 +21830,9 @@ in the vicinity of sonic velocity .
 .T
 studies on two dimensional flows of compressible fluid.
 .A
+
 .B
+
 .W
 studies on two dimensional flows of compressible fluid.
   it is well-known that when the flow is everywhere subsonic in a field
@@ -23851,6 +23891,7 @@ revolution .
 .A
 s. a. tobias, ph.d.
 .B
+
 .W
 a theory of imperfection for the vibrations of elastic bodies of
 revolution .
@@ -24190,6 +24231,7 @@ status of flutter of flat and curved panels .
 .A
 national advisory committee for aeronautics
 .B
+
 .W
 status of flutter of flat and curved panels .
 representative results are presented to show the current status of
@@ -27662,6 +27704,7 @@ from 90degree to 180degree .
 .A
 hayman, l.o. and mcdearmon, r.w.
 .B
+
 .W
  the extent of the jet interference flow fields .
 jet effects on cylindrical afterbodies housing sonic and supersonic
@@ -27711,9 +27754,13 @@ reduced by retrorocket operation below the drag for a jet-off condition,
 numbers and retrorocket thrust coefficients investigated .
 .I 995
 .T
+
 .A
+
 .B
+
 .W
+
 .I 996
 .T
 extension of boundary layer separation criteria to
@@ -27966,7 +28013,9 @@ appears to hold considerable promise for hypersonic flight .
 .T
 free-flight measurements of the static and dynamic .
 .A
+
 .B
+
 .W
 free-flight measurements of the static and dynamic .
   the real-gas hypersonic flow parameters for helium have been
@@ -27986,7 +28035,9 @@ determined from the ideal-gas tabulation with a specific heat ratio of
 .T
 free-flight measurements of the static and dynamic .
 .A
+
 .B
+
 .W
 free-flight measurements of the static and dynamic .
   the effects of contamination of helium by air upon static-pressure,
@@ -28005,7 +28056,9 @@ are about 1.7 and 0.4 percent, respectively .
 .T
 free-flight measurements of the static and dynamic .
 .A
+
 .B
+
 .W
 free-flight measurements of the static and dynamic .
   equations based on newtonian impact theory have been derived and a
@@ -28023,7 +28076,9 @@ either separate or combined sideslip and yawing maneuvers .
 .T
 free-flight measurements of the static and dynamic .
 .A
+
 .B
+
 .W
 free-flight measurements of the static and dynamic .
   the inviscid flow of a perfect gas over blunt-nosed axisymmetric
@@ -28038,7 +28093,9 @@ surface-pressure distributions, and flow-field surveys .
 .T
 free-flight measurements of the static and dynamic .
 .A
+
 .B
+
 .W
 free-flight measurements of the static and dynamic .
   this report presents equations, tables, and figures for use in the
@@ -28061,7 +28118,9 @@ a perfect gas .
 .T
 free-flight measurements of the static and dynamic .
 .A
+
 .B
+
 .W
 free-flight measurements of the static and dynamic .
   representative experimental results are presented to show the
@@ -28076,7 +28135,9 @@ orthotropic panels is presented in the appendix .
 .T
 free-flight measurements of the static and dynamic .
 .A
+
 .B
+
 .W
 free-flight measurements of the static and dynamic .
   charts of thermodynamic properties for equilibrium air are presented
@@ -28098,7 +28159,9 @@ combinations of stagnation temperatures and pressures .
 .T
 free-flight measurements of the static and dynamic .
 .A
+
 .B
+
 .W
 free-flight measurements of the static and dynamic .
   air-flow properties in nozzles were calculated and charted for
@@ -28118,7 +28181,9 @@ normal shock waves were also included .
 .T
 free-flight measurements of the static and dynamic .
 .A
+
 .B
+
 .W
 free-flight measurements of the static and dynamic .
   charts have been prepared relating the thermodynamic properties of
@@ -28163,7 +28228,9 @@ eccentricities .
 .T
 principles of creep buckling weight-strength analysis .
 .A
+
 .B
+
 .W
 principles of creep buckling weight-strength analysis .
   published work on creep buckling has implied that failure
@@ -28183,7 +28250,9 @@ plates and shells to creep buckling problems .
 .T
 principles of creep buckling weight-strength analysis .
 .A
+
 .B
+
 .W
 principles of creep buckling weight-strength analysis .
 a problem of creep stability of columns and plates
@@ -28197,7 +28266,9 @@ theory .
 .T
 principles of creep buckling weight-strength analysis .
 .A
+
 .B
+
 .W
 principles of creep buckling weight-strength analysis .
   the determination of column deflections and
@@ -28223,7 +28294,9 @@ some preliminary tests of an aluminum alloy .
 .T
 principles of creep buckling weight-strength analysis .
 .A
+
 .B
+
 .W
 principles of creep buckling weight-strength analysis .
   the relation of the time-dependent tangent-modulus
@@ -28262,7 +28335,9 @@ less than the theoretical buckling load .
 .T
 note on creep buckling of columns .
 .A
+
 .B
+
 .W
 note on creep buckling of columns .
   the results of short-time elevated-temperature creep tests of
@@ -28281,7 +28356,9 @@ satisfactory for predicting column lifetime for design purposes .
 .T
 note on creep buckling of columns .
 .A
+
 .B
+
 .W
 note on creep buckling of columns .
   a method for estimating allowable
@@ -28332,7 +28409,9 @@ temperatures falls rapidly, however, with increasing time .
 .T
 note on creep buckling of columns .
 .A
+
 .B
+
 .W
 note on creep buckling of columns .
   the results of short-time
@@ -28361,7 +28440,9 @@ of the critical time for columns .
 .T
 note on creep buckling of columns .
 .A
+
 .B
+
 .W
 note on creep buckling of columns .
   this paper describes theory and tests of the creep collapse
@@ -28374,7 +28455,9 @@ agreement between theoretical and test results was fair .
 .T
 note on creep buckling of columns .
 .A
+
 .B
+
 .W
 note on creep buckling of columns .
   forty-three cylinders of 40-inch
@@ -28392,7 +28475,9 @@ collapse was measured .
 .T
 note on creep buckling of columns .
 .A
+
 .B
+
 .W
 note on creep buckling of columns .
   a theory of creep buckling is presented in which the instantaneous
@@ -28405,7 +28490,9 @@ can be computed .
 .T
 note on creep buckling of columns .
 .A
+
 .B
+
 .W
 note on creep buckling of columns .
   the general dynamic equation of
@@ -28447,7 +28534,9 @@ with aluminum columns .
 .T
 note on creep buckling of columns .
 .A
+
 .B
+
 .W
 note on creep buckling of columns .
   the creep of a slightly crooked section column carrying a
@@ -28473,7 +28562,9 @@ of stresses, strains, and deflections prior to collapse .
 .T
 note on creep buckling of columns .
 .A
+
 .B
+
 .W
 note on creep buckling of columns .
   this paper is concerned with the solution of the creep buckling of
@@ -28485,7 +28576,9 @@ of the exponents appearing in the creep law .
 .T
 note on creep buckling of columns .
 .A
+
 .B
+
 .W
 note on creep buckling of columns .
   a phenomenological relation between
@@ -28510,7 +28603,9 @@ well with test data .
 .T
 note on creep buckling of columns .
 .A
+
 .B
+
 .W
 note on creep buckling of columns .
   the phenomenological theory previously
@@ -28551,7 +28646,9 @@ agreement is found .
 .T
 note on creep buckling of columns .
 .A
+
 .B
+
 .W
 note on creep buckling of columns .
   a variational theorem is presented for a body undergoing
@@ -28565,7 +28662,9 @@ problems .
 .T
 note on creep buckling of columns .
 .A
+
 .B
+
 .W
 note on creep buckling of columns .
   some general topics in elastic stability are discussed .  in
@@ -28577,7 +28676,9 @@ character of the loading .
 .T
 note on creep buckling of columns .
 .A
+
 .B
+
 .W
 note on creep buckling of columns .
   a general variational theory of elastic stability that was
@@ -28617,7 +28718,9 @@ conservative, constant directional loading .
 the design of tubes under uniform external pressure on the
 basis of assumed inaccuracies .
 .A
+
 .B
+
 .W
 the design of tubes under uniform external pressure on the
 basis of assumed inaccuracies .
@@ -28634,7 +28737,9 @@ initial radial deflections w' .
 .T
 note on creep buckling of columns .
 .A
+
 .B
+
 .W
 note on creep buckling of columns .
   a long, thin-walled cylindrical shell is loaded by a uniform
@@ -28659,7 +28764,9 @@ if the nominal initial shape factor value is sufficiently large .
 .T
 note on creep buckling of columns .
 .A
+
 .B
+
 .W
 note on creep buckling of columns .
   the stability of a compressed elastic
@@ -28726,7 +28833,9 @@ boundary .
 .T
 on transverse vibrations of thin, shallow elastic shells .
 .A
+
 .B
+
 .W
 on transverse vibrations of thin, shallow elastic shells .
 it is shown that a perfectly straight bar, subjected
@@ -28744,7 +28853,9 @@ introduced and analyzed .
 .T
 on transverse vibrations of thin, shallow elastic shells .
 .A
+
 .B
+
 .W
 on transverse vibrations of thin, shallow elastic shells .
   the deformation and complete stress
@@ -28766,7 +28877,9 @@ cylinder and a portion of a sphere,
 .T
 on transverse vibrations of thin, shallow elastic shells .
 .A
+
 .B
+
 .W
 on transverse vibrations of thin, shallow elastic shells .
   an experimental investigation was
@@ -28826,7 +28939,9 @@ the other cases .
 .T
 on transverse vibrations of thin, shallow elastic shells .
 .A
+
 .B
+
 .W
 on transverse vibrations of thin, shallow elastic shells .
   experimental measurements of pressures and heat-transfer
@@ -28908,7 +29023,9 @@ other approximate solutions .
 .T
 on transverse vibrations of thin, shallow elastic shells .
 .A
+
 .B
+
 .W
 on transverse vibrations of thin, shallow elastic shells .
   the report presents information
@@ -28929,7 +29046,9 @@ not necessarily plane .
 .T
 on transverse vibrations of thin, shallow elastic shells .
 .A
+
 .B
+
 .W
 on transverse vibrations of thin, shallow elastic shells .
   a numerical analysis is given for the solution of the
@@ -28991,7 +29110,9 @@ loading of pressurized cylinders, in terms of membrane theory .
 .T
 the bending strength of pressurized cylinders .
 .A
+
 .B
+
 .W
 the bending strength of pressurized cylinders .
   a theoretical solution is given
@@ -29013,7 +29134,9 @@ of cylinder dimensions .
 .T
 the bending strength of pressurized cylinders .
 .A
+
 .B
+
 .W
 the bending strength of pressurized cylinders .
 be described here is attributed to the russian
@@ -32029,6 +32152,7 @@ hypersonic air stream .
 .A
 bernard e. cunningham and samuel kraus
 .B
+
 .W
 experimental investigation of the effect of yaw on
 rates of heat transfer to transverse circular
@@ -33671,6 +33795,7 @@ speeds-three-dimensional roughness effects (spheres).
 .A
 van driest,e.r. and blumer,c.b.
 .B
+
 .W
 boundary layer transition at supersonic
 speeds-three-dimensional roughness effects (spheres).
@@ -38479,7 +38604,9 @@ both laminar and turbulent flows are considered .
 .T
 steady motion of a sphere., oseen's criticism and solution .
 .A
+
 .B
+
 .W
 steady motion of a sphere., oseens's criticism and solution .
 the formula of stokes for the resistance experienced slowly
