@@ -1,6 +1,8 @@
 package txtparsing;
 
 import utils.IO;
+
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,9 +29,9 @@ public class TXTParsing {
 //                System.out.println(adoc[3].substring(1));
 //                System.out.println(adoc[4].substring(1));
 //                System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-                MyDoc mydoc = new MyDoc(Integer.parseInt(adoc[0].replace(".I ","")),adoc[1].substring(1),adoc[2].substring(1),adoc[3].substring(1),adoc[4].substring(1));
+                MyDoc mydoc = new MyDoc(Integer.parseInt(adoc[0].replace(".I ","").replace("\r","")),adoc[1].substring(1),adoc[2].substring(1),adoc[3].substring(1),adoc[4].substring(1));
                 parsed_docs.add(mydoc);
-//                System.out.println(mydoc.getId());
+                System.out.println(mydoc.getId());
             }
             //^(?:\.[ATBWI])$
 
@@ -41,4 +43,22 @@ public class TXTParsing {
         
     }
 
+    public static void editQrel(String file) throws Exception {
+        try{
+            FileWriter newFile = new FileWriter("newcranqrel.txt");
+            //Parse txt file
+            String txt_file = IO.ReadEntireFileIntoAString(file);
+            String[] docs = txt_file.split("\n");
+            for (String doc:docs){
+                String values[] = doc.split(" ");
+                newFile.write(values[0]+ " 0 "+ values[1] + " 1\n");
+
+            }
+        } catch (Throwable err) {
+            err.printStackTrace();
+        }
+    }
+    public static void main(String[] args) throws Exception {
+        editQrel("docs/cranqrel");
+    }
 }

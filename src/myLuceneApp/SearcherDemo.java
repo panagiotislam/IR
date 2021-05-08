@@ -1,12 +1,11 @@
 package myLuceneApp;
 
 // tested for lucene 7.7.2 and jdk13
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.en.EnglishAnalyzer;
@@ -63,30 +62,40 @@ public class SearcherDemo {
             //read querries from file
             HashMap<Integer, String> querries = new HashMap<>();
             querries = querryParser("docs/cran.qry");
-            for (String line:querries.values()) {
 
-                while (line != null && !line.equals("") && !line.equalsIgnoreCase("q")) {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Enter number of articles or zero to quit: ");
+            System.out.print(">>");
+            int k = scanner.nextInt();
+
+            while(k>0){
+                FileWriter file = new FileWriter("myIRfor_"+k+".txt");
+                for (Integer querryId:querries.keySet()) {
+                    String querry = querries.get(querryId).replace("?","");
+
                     // parse the query according to QueryParser
-                    Query query = parser.parse(line);
+                    Query query = parser.parse(querry);
                     System.out.println("Searching for: " + query.toString(field));
 
                     // search the index using the indexSearcher
-                    TopDocs results = indexSearcher.search(query, 100);
+                    TopDocs results = indexSearcher.search(query, k);
                     ScoreDoc[] hits = results.scoreDocs;
                     long numTotalHits = results.totalHits;
                     System.out.println(numTotalHits + " total matching documents");
 
-                    //display results
+                    //display and save results
                     for (int i = 0; i < hits.length; i++) {
                         Document hitDoc = indexSearcher.doc(hits[i].doc);
-                        System.out.println("\tscore " + hits[i].score + "\tid " + hitDoc.get("id"));
+                        //System.out.println("\tscore " + hits[i].score + "\tid " + hitDoc.get("id"));
+                        file.write(querryId + " 0 " +hitDoc.get("id") + " 0 " +hits[i].score + " myIRfor_"+k+"\n");
+
                     }
 
-                    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-                    System.out.println("Enter number of articles: ");
-                    System.out.print(">>");
-                    line = br.readLine();
                 }
+                file.close();
+                System.out.println("Enter number of articles or zero to quit: ");
+                System.out.print(">>");
+                k = scanner.nextInt();
             }
         } catch(Exception e){
             e.printStackTrace();
@@ -105,11 +114,22 @@ public class SearcherDemo {
 
     }
 
+
+//    try {
+//        File myObj = new File("filename.txt");
+//        if (myObj.createNewFile()) {
+//            System.out.println("File created: " + myObj.getName());
+//        } else {
+//            System.out.println("File already exists.");
+//        }
+//    } catch (IOException e) {
+//        System.out.println("An error occurred.");
+//        e.printStackTrace();
+//    }
+
     /**
      * Initialize a SearcherDemo
      */
-
-
     public static void main(String[] args) throws FileNotFoundException{
         SearcherDemo searcherDemo = new SearcherDemo();
     }
