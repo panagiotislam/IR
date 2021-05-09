@@ -37,7 +37,7 @@ public class IndexerDemo {
      */
     public IndexerDemo() throws Exception{
         
-        String txtfile =  "docs/cran.all.1400"; //txt file to be parsed and indexed, it contains one document per line
+        String txtfile =  "IR/docs/cran.all.1400"; //txt file to be parsed and indexed, it contains one document per line
         String indexLocation = ("index"); //define were to store the index        
         
         Date start = new Date();
@@ -103,7 +103,7 @@ public class IndexerDemo {
             doc.add(author);
             StoredField b = new StoredField("b", mydoc.getB());
             doc.add(b);
-            StoredField body = new StoredField("body", mydoc.getB());
+            StoredField body = new StoredField("body", mydoc.getBody());
             doc.add(body);
             String fullSearchableText = mydoc.getId() + " " + mydoc.getTitle() + " " + mydoc.getAuthor() + " " + mydoc.getB() + " " + mydoc.getBody();
             TextField contents = new TextField("contents", fullSearchableText, Field.Store.NO);

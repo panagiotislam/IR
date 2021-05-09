@@ -46,7 +46,7 @@ public class ReaderDemo {
             
             for (int i=0; i<indexReader.maxDoc(); i++) {
                 Document doc = indexReader.document(i);
-                System.out.println("\tid="+doc.getField("id")+"\ttitle:"+doc.get("title")+"\tb:"+doc.get("b")+"\tbody:"+doc.get("body"));
+                System.out.println("\nid="+doc.getField("id")+"\nauthor"+doc.get("author")+"\ntitle:"+doc.get("title")+"\nb:"+doc.get("b")+"\nbody:"+doc.get("body"));
             }
         } catch (CorruptIndexException ex) {
             ex.printStackTrace();

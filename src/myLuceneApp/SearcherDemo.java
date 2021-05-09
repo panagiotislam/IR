@@ -61,7 +61,7 @@ public class SearcherDemo {
 
             //read querries from file
             HashMap<Integer, String> querries = new HashMap<>();
-            querries = querryParser("docs/cran.qry");
+            querries = querryParser("IR/docs/cran.qry");
 
             Scanner scanner = new Scanner(System.in);
             System.out.println("Enter number of articles or zero to quit: ");
