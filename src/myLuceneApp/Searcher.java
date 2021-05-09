@@ -1,10 +1,8 @@
 package myLuceneApp;
 
-// tested for lucene 7.7.2 and jdk13
 import java.io.*;
 import java.nio.file.Paths;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 import org.apache.lucene.analysis.Analyzer;
@@ -17,18 +15,13 @@ import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.search.TopDocs;
-import org.apache.lucene.search.similarities.BM25Similarity;
 import org.apache.lucene.search.similarities.ClassicSimilarity;
 import org.apache.lucene.store.FSDirectory;
 import utils.IO;
 
-/**
- *
- * @author Tonia Kyriakopoulou
- */
-public class SearcherDemo {
+public class Searcher {
 
-    public SearcherDemo(){
+    public Searcher(){
         try{
             String indexLocation = ("index"); //define where the index is stored
             String field = "contents"; //define which field will be searched            
@@ -48,9 +41,6 @@ public class SearcherDemo {
         }
     }
 
-    /**
-     * Searches the index given a specific user query.
-     */
     private void search(IndexSearcher indexSearcher, String field){
         try{
             // define which analyzer to use for the normalization of user's query
@@ -86,9 +76,7 @@ public class SearcherDemo {
                     //display and save results
                     for (int i = 0; i < hits.length; i++) {
                         Document hitDoc = indexSearcher.doc(hits[i].doc);
-                        //System.out.println("\tscore " + hits[i].score + "\tid " + hitDoc.get("id"));
                         file.write(querryId + " 0 " +hitDoc.get("id") + " 0 " +hits[i].score + " myIRfor_"+k+"\n");
-
                     }
 
                 }
@@ -114,23 +102,7 @@ public class SearcherDemo {
 
     }
 
-
-//    try {
-//        File myObj = new File("filename.txt");
-//        if (myObj.createNewFile()) {
-//            System.out.println("File created: " + myObj.getName());
-//        } else {
-//            System.out.println("File already exists.");
-//        }
-//    } catch (IOException e) {
-//        System.out.println("An error occurred.");
-//        e.printStackTrace();
-//    }
-
-    /**
-     * Initialize a SearcherDemo
-     */
     public static void main(String[] args) throws FileNotFoundException{
-        SearcherDemo searcherDemo = new SearcherDemo();
+        Searcher searcherDemo = new Searcher();
     }
 }

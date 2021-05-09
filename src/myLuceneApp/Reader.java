@@ -1,7 +1,5 @@
 package myLuceneApp;
 
-// tested for lucene 7.7.2 and jdk13
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
 
@@ -11,13 +9,9 @@ import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.store.FSDirectory;
 
-/**
- *
- * @author Tonia Kyriakopoulou
- */
-public class ReaderDemo {
+public class Reader {
     
-    public ReaderDemo(){
+    public Reader(){
         try{
 
             String indexLocation = ("index"); //define where the index is stored            
@@ -35,10 +29,7 @@ public class ReaderDemo {
             e.printStackTrace();
         }
     }
-    
-    /**
-     * Retrieves all documents in the index using indexReader
-     */
+
     private void printIndexDocuments(IndexReader indexReader){
         try {
             System.out.println("--------------------------");
@@ -46,7 +37,7 @@ public class ReaderDemo {
             
             for (int i=0; i<indexReader.maxDoc(); i++) {
                 Document doc = indexReader.document(i);
-                System.out.println("\nid="+doc.getField("id")+"\nauthor"+doc.get("author")+"\ntitle:"+doc.get("title")+"\nb:"+doc.get("b")+"\nbody:"+doc.get("body"));
+                System.out.println("\nid="+doc.getField("id")+"\nauthor="+doc.get("author")+"\ntitle="+doc.get("title")+"\nb="+doc.get("b")+"\nbody="+doc.get("body"));
             }
         } catch (CorruptIndexException ex) {
             ex.printStackTrace();
@@ -55,10 +46,7 @@ public class ReaderDemo {
         }
     }
 
-    /**
-     * Initialize a ReaderDemo
-     */    
     public static void main(String[] args){
-        ReaderDemo readerDemo = new ReaderDemo();
+        Reader reader = new Reader();
     }
 }

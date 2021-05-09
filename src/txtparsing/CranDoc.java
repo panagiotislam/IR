@@ -4,7 +4,7 @@ package txtparsing;
  *
  * @author Tonia Kyriakopoulou
  */
-public class MyDoc {
+public class CranDoc {
 
     private int id;
     private String title;
@@ -12,7 +12,7 @@ public class MyDoc {
     private String b;
     private String body;
 
-    public MyDoc(int id, String title, String author, String b, String body) {
+    public CranDoc(int id, String title, String author, String b, String body) {
         this.id = id;
         this.title = title;
         this.author = author;
@@ -22,7 +22,7 @@ public class MyDoc {
 
     @Override
     public String toString() {
-        String ret = "MyDoc{"
+        String ret = "CranDoc{"
                 + "\n\tId: " + id
                 + "\n\tTitle: " + title
                 + "\n\tAuthor: " + author
