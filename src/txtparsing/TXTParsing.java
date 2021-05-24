@@ -47,6 +47,6 @@ public class TXTParsing {
         }
     }
     public static void main(String[] args) throws Exception {
-        editQrel("IR/docs/cranqrel");
+        editQrel("docs/cranqrel");
     }
 }

@@ -25,7 +25,7 @@ public class Indexer {
 
     public Indexer() throws Exception{
         
-        String txtfile =  "IR/docs/cran.all.1400"; //txt file to be parsed and indexed, it contains one document per line
+        String txtfile =  "docs/cran.all.1400"; //txt file to be parsed and indexed, it contains one document per line
         String indexLocation = ("index"); //define were to store the index        
         
         Date start = new Date();
