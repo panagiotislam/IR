@@ -47,6 +47,35 @@ public class TXTParsing {
         }
     }
     public static void main(String[] args) throws Exception {
-        editQrel("docs/cranqrel");
+        //editQrel("docs/cranqrel");
+        List<QueryDoc> test = parseQuery("docs/cran.qry");
+        System.out.println();
     }
+
+    public static List<QueryDoc> parseQuery(String file) throws Exception {
+        try{
+            //Parse txt file
+            String txt_file = IO.ReadEntireFileIntoAString(file);
+            String[] docs = txt_file.split("\n.I ");
+            System.out.println("Read: "+docs.length + " docs");
+
+            //Parse each document from the txt file
+            List<QueryDoc> parsed_docs= new ArrayList<QueryDoc>();
+            for (String doc:docs){
+                String[] adoc = doc.split("\n(?:\\.[W])");
+                QueryDoc mydoc = new QueryDoc(Integer.parseInt(adoc[0].replace(".I ","").replace("\r","")),adoc[1].substring(1));
+                parsed_docs.add(mydoc);
+                System.out.println(mydoc.getId());
+            }
+            return parsed_docs;
+        } catch (Throwable err) {
+            err.printStackTrace();
+            return null;
+        }
+
+    }
+
+
+
+
 }

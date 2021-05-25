@@ -35,8 +35,7 @@ import org.apache.lucene.classification.utils.DocToDoubleVectorUtils;
 import txtparsing.CranDoc;
 import txtparsing.TXTParsing;
 import utils.IO;
-import Jama.Matrix;
-import Jama.SingularValueDecomposition;
+
 
 public class CreateTermDocMatrix {
 
@@ -45,7 +44,9 @@ public class CreateTermDocMatrix {
 	public static void main(String[] args) throws IOException, ParseException {
 
 		String txtfile =  "docs/cran.all.1400";
-		double [][] A ;
+		String querries =  "docs/cran.qry";
+		String [][] A ;
+		String [][] txd1;
 
 		try {
 			Date start = new Date();
@@ -54,10 +55,10 @@ public class CreateTermDocMatrix {
 			//   Specify retrieval model (Vector Space Model)
 			EnglishAnalyzer analyzer = new EnglishAnalyzer();
 			Similarity similarity = new ClassicSimilarity();
-			
+
 			//   create the index
 			Directory index = new RAMDirectory();
-			
+
 			IndexWriterConfig config = new IndexWriterConfig(analyzer);
 			config.setSimilarity(similarity);
 
@@ -66,7 +67,7 @@ public class CreateTermDocMatrix {
 			type.setTokenized(true);
 			type.setStored(true);
 			type.setStoreTermVectors(true);
-			
+
 			IndexWriter writer = new IndexWriter(index, config);
 
 			// parse txt document using TXT parser and index it
@@ -74,12 +75,12 @@ public class CreateTermDocMatrix {
 			for (CranDoc doc : docs){
 				//indexDoc(writer, doc);
 				addDocWithTermVector(writer, doc.getBody(), type);
+				//.replace("0","").replace("1","").replace("2","").replace("3","").replace("4","").replace("5","").replace("6","").replace("7","").replace("8","").replace("9","")
 			}
 
 			writer.close();
 
-			Date end = new Date();
-			System.out.println(end.getTime() - start.getTime() + " total milliseconds");
+
 
 //			addDocWithTermVector(writer, "Lucene in Action", type);
 //			addDocWithTermVector(writer, "Lucene for Dummies", type);
@@ -92,33 +93,34 @@ public class CreateTermDocMatrix {
 			A = testSparseFreqDoubleArrayConversion(reader);
 
 			saveArray(A);
-			svd(A);
+
 			// searcher can only be closed when there
 			// is no need to access the documents any more.
 			reader.close();
 
+			Date end = new Date();
+			System.out.println(end.getTime() - start.getTime() + " total milliseconds");
+
 		}
-			catch(Exception e){
-				e.printStackTrace();
-			}
-
-
+		catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 
 
 
 	private static void addDocWithTermVector(IndexWriter writer, String value, FieldType type) throws IOException {
 		Document doc = new Document();
-	    //TextField title = new TextField("title", value, Field.Store.YES);
+		//TextField title = new TextField("title", value, Field.Store.YES);
 		Field field = new Field("name", value, type);
 		doc.add(field);  //this field has term Vector enabled.
 		writer.addDocument(doc);
 	}
- 
-	private static double[][] testSparseFreqDoubleArrayConversion(IndexReader reader) throws Exception {
+
+	private static String[][] testSparseFreqDoubleArrayConversion(IndexReader reader) throws Exception {
 		Terms fieldTerms = MultiFields.getTerms(reader, "name");   //the number of terms in the lexicon after analysis of the Field "title"
 		System.out.println("Terms:" + fieldTerms.size());
-		double [][] B = new double[1400][(int) fieldTerms.size()];
+    	String [][] B = new String[(int) fieldTerms.size()][1400];
 		TermsEnum it = fieldTerms.iterator();						//iterates through the terms of the lexicon
 		while(it.next() != null) {
 			System.out.print(it.term().utf8ToString() + "\n"); 		//prints the terms
@@ -133,19 +135,26 @@ public class CreateTermDocMatrix {
 				Terms docTerms = reader.getTermVector(scoreDoc.doc, "name");
 
 				Double[] vector = DocToDoubleVectorUtils.toSparseLocalFreqDoubleArray(docTerms, fieldTerms); //creates document's vector
-				
+
 				NumberFormat nf = new DecimalFormat("0.#");
 				if (vector!=null) {
+
 					for (int i = 0; i <= vector.length - 1; i++) {
 						//System.out.print(nf.format(vector[i]) + " ");   //prints document's vector
-						if(vector[i] > 1){
-							B[scoreDoc.doc][i] = Double.parseDouble(nf.format(1));
-						}else {
-							B[scoreDoc.doc][i] = Double.parseDouble(nf.format(vector[i]));
+						if(vector[i] > 1) {
+							B[i][scoreDoc.doc] = nf.format(1);
+						} else {
+							B[i][scoreDoc.doc] = nf.format(vector[i]);
 						}
 					}
 					//System.out.println();
 
+				} else {
+					for (int i = 0; i < (int) fieldTerms.size() ; i++) {
+						//System.out.print(nf.format(vector[i]) + " ");   //prints document's vector
+						B[i][scoreDoc.doc] = nf.format(0);
+
+					}
 				}
 			}
 			System.out.println();
@@ -153,12 +162,12 @@ public class CreateTermDocMatrix {
 		return B;
 	}
 
-	private static void saveArray(double[][] a) {
+	private static void saveArray(String[][] a) {
 		try{
 			FileWriter newFile = new FileWriter("txdArray.txt");
 			//Parse txt file
-			for (double[] x : a){
-				for (double y : x){
+			for (String[] x : a){
+				for (String y : x){
 					newFile.write(y + " ");
 				}
 				newFile.write("\n");
@@ -169,52 +178,4 @@ public class CreateTermDocMatrix {
 		}
 	}
 
-	public static void svd (double [][] a) {
-
-		System.out.println("********************************************************************************************************************************************************************************");
-		System.out.println("********************************************************************************************************************************************************************************");
-		System.out.println("********************************************************************************************************************************************************************************");
-		System.out.println("********************************************************************************************************************************************************************************");
-		System.out.println("********************************************************************************************************************************************************************************");
-		Matrix A = new Matrix(a);
-		System.out.println("A = U S V^T");
-		System.out.println();
-		SingularValueDecomposition s = A.svd();
-
-		System.out.print("U = ");
-		double[][] U = s.getS().getArray();
-		print_array(U);
-
-		System.out.print("Sigma = ");
-		double[][] S = s.getS().getArray();
-		print_array(S);
-
-		System.out.print("V = ");
-		double[][] V = s.getV().getArray();
-		print_array(V);
-
-		System.out.println("rank = " + s.rank());
-		System.out.println("condition number = " + s.cond());
-		System.out.println("2-norm = " + s.norm2());
-
-		// print out singular values
-		System.out.print("singular values = ");
-		Matrix svalues = new Matrix(s.getSingularValues(), 1);
-		svalues.print(9, 6);
-	}
-
-	public static void print_array(double [][] arr) {
-		for(double [] x : arr) {
-			for(double y : x) {
-				System.out.println(y + " ");
-			}
-		}
-	}
-
 }
-
-//if(Integer.parseInt(y)>1){
-//		newFile.write(1 + " ");
-//		}else {
-//		newFile.write(y + " ");
-//		}
