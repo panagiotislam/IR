@@ -35,7 +35,8 @@ import org.apache.lucene.classification.utils.DocToDoubleVectorUtils;
 import txtparsing.CranDoc;
 import txtparsing.TXTParsing;
 import utils.IO;
-
+import Jama.Matrix;
+import Jama.SingularValueDecomposition;
 
 public class CreateTermDocMatrix {
 
@@ -44,7 +45,7 @@ public class CreateTermDocMatrix {
 	public static void main(String[] args) throws IOException, ParseException {
 
 		String txtfile =  "docs/cran.all.1400";
-		String [][] A ;
+		double [][] A ;
 
 		try {
 			Date start = new Date();
@@ -91,7 +92,7 @@ public class CreateTermDocMatrix {
 			A = testSparseFreqDoubleArrayConversion(reader);
 
 			saveArray(A);
-
+			svd(A);
 			// searcher can only be closed when there
 			// is no need to access the documents any more.
 			reader.close();
@@ -100,6 +101,8 @@ public class CreateTermDocMatrix {
 			catch(Exception e){
 				e.printStackTrace();
 			}
+
+
 	}
 
 
@@ -112,10 +115,10 @@ public class CreateTermDocMatrix {
 		writer.addDocument(doc);
 	}
  
-	private static String[][] testSparseFreqDoubleArrayConversion(IndexReader reader) throws Exception {
+	private static double[][] testSparseFreqDoubleArrayConversion(IndexReader reader) throws Exception {
 		Terms fieldTerms = MultiFields.getTerms(reader, "name");   //the number of terms in the lexicon after analysis of the Field "title"
 		System.out.println("Terms:" + fieldTerms.size());
-		String [][] B = new String[1400][(int) fieldTerms.size()];
+		double [][] B = new double[1400][(int) fieldTerms.size()];
 		TermsEnum it = fieldTerms.iterator();						//iterates through the terms of the lexicon
 		while(it.next() != null) {
 			System.out.print(it.term().utf8ToString() + "\n"); 		//prints the terms
@@ -136,9 +139,9 @@ public class CreateTermDocMatrix {
 					for (int i = 0; i <= vector.length - 1; i++) {
 						//System.out.print(nf.format(vector[i]) + " ");   //prints document's vector
 						if(vector[i] > 1){
-							B[scoreDoc.doc][i] = nf.format(1);
+							B[scoreDoc.doc][i] = Double.parseDouble(nf.format(1));
 						}else {
-							B[scoreDoc.doc][i] = nf.format(vector[i]);
+							B[scoreDoc.doc][i] = Double.parseDouble(nf.format(vector[i]));
 						}
 					}
 					//System.out.println();
@@ -150,12 +153,12 @@ public class CreateTermDocMatrix {
 		return B;
 	}
 
-	private static void saveArray(String[][] a) {
+	private static void saveArray(double[][] a) {
 		try{
 			FileWriter newFile = new FileWriter("txdArray.txt");
 			//Parse txt file
-			for (String[] x : a){
-				for (String y : x){
+			for (double[] x : a){
+				for (double y : x){
 					newFile.write(y + " ");
 				}
 				newFile.write("\n");
@@ -163,6 +166,48 @@ public class CreateTermDocMatrix {
 
 		} catch (Throwable err) {
 			err.printStackTrace();
+		}
+	}
+
+	public static void svd (double [][] a) {
+
+		System.out.println("********************************************************************************************************************************************************************************");
+		System.out.println("********************************************************************************************************************************************************************************");
+		System.out.println("********************************************************************************************************************************************************************************");
+		System.out.println("********************************************************************************************************************************************************************************");
+		System.out.println("********************************************************************************************************************************************************************************");
+		Matrix A = new Matrix(a);
+		System.out.println("A = U S V^T");
+		System.out.println();
+		SingularValueDecomposition s = A.svd();
+
+		System.out.print("U = ");
+		double[][] U = s.getS().getArray();
+		print_array(U);
+
+		System.out.print("Sigma = ");
+		double[][] S = s.getS().getArray();
+		print_array(S);
+
+		System.out.print("V = ");
+		double[][] V = s.getV().getArray();
+		print_array(V);
+
+		System.out.println("rank = " + s.rank());
+		System.out.println("condition number = " + s.cond());
+		System.out.println("2-norm = " + s.norm2());
+
+		// print out singular values
+		System.out.print("singular values = ");
+		Matrix svalues = new Matrix(s.getSingularValues(), 1);
+		svalues.print(9, 6);
+	}
+
+	public static void print_array(double [][] arr) {
+		for(double [] x : arr) {
+			for(double y : x) {
+				System.out.println(y + " ");
+			}
 		}
 	}
 
