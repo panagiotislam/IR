@@ -13,7 +13,6 @@ import org.apache.lucene.analysis.en.EnglishAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
 import org.apache.lucene.document.FieldType;
-import org.apache.lucene.document.TextField;
 import org.apache.lucene.queryparser.classic.ParseException;
 import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.MatchAllDocsQuery;
@@ -25,7 +24,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -33,8 +31,8 @@ import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexOptions;
 import org.apache.lucene.classification.utils.DocToDoubleVectorUtils;
 import txtparsing.CranDoc;
+import txtparsing.QueryDoc;
 import txtparsing.TXTParsing;
-import utils.IO;
 
 
 public class CreateTermDocMatrix {
@@ -46,7 +44,7 @@ public class CreateTermDocMatrix {
 		String txtfile =  "docs/cran.all.1400";
 		String querries =  "docs/cran.qry";
 		String [][] A ;
-		String [][] txd1;
+		String [][] tx1;
 
 		try {
 			Date start = new Date();
@@ -80,23 +78,46 @@ public class CreateTermDocMatrix {
 
 			writer.close();
 
-
-
-//			addDocWithTermVector(writer, "Lucene in Action", type);
-//			addDocWithTermVector(writer, "Lucene for Dummies", type);
-//			addDocWithTermVector(writer, "Managing Gigabytes", type);
-//			addDocWithTermVector(writer, "The Art of Computer Science", type);
-//			writer.close();
-//
 			IndexReader reader = DirectoryReader.open(index);
+			Terms terms = getTerms(reader);
 
-			A = testSparseFreqDoubleArrayConversion(reader);
+			A = testSparseFreqDoubleArrayConversion(reader, docs.size(),terms);
 
-			saveArray(A);
+			saveArray(A,"d");
 
 			// searcher can only be closed when there
 			// is no need to access the documents any more.
 			reader.close();
+
+
+			//querries
+			Directory indexQ = new RAMDirectory();
+
+			IndexWriterConfig configQ = new IndexWriterConfig(analyzer);
+			config.setSimilarity(similarity);
+
+			IndexWriter writerQ = new IndexWriter(indexQ, configQ);
+
+			// parse txt document using TXT parser and index it
+			List<QueryDoc> qrs = TXTParsing.parseQuery(querries);
+			for (QueryDoc doc : qrs){
+				//indexDoc(writer, doc);
+				addDocWithTermVector(writerQ, doc.getBody(), type);
+				//.replace("0","").replace("1","").replace("2","").replace("3","").replace("4","").replace("5","").replace("6","").replace("7","").replace("8","").replace("9","")
+			}
+
+			writerQ.close();
+
+			IndexReader readerQ = DirectoryReader.open(indexQ);
+
+			tx1 = testSparseFreqDoubleArrayConversion(readerQ, qrs.size(),terms);
+
+			saveArray(tx1,"q");
+
+			// searcher can only be closed when there
+			// is no need to access the documents any more.
+			readerQ.close();
+
 
 			Date end = new Date();
 			System.out.println(end.getTime() - start.getTime() + " total milliseconds");
@@ -117,15 +138,8 @@ public class CreateTermDocMatrix {
 		writer.addDocument(doc);
 	}
 
-	private static String[][] testSparseFreqDoubleArrayConversion(IndexReader reader) throws Exception {
-		Terms fieldTerms = MultiFields.getTerms(reader, "name");   //the number of terms in the lexicon after analysis of the Field "title"
-		System.out.println("Terms:" + fieldTerms.size());
-    	String [][] B = new String[(int) fieldTerms.size()][1400];
-		TermsEnum it = fieldTerms.iterator();						//iterates through the terms of the lexicon
-		while(it.next() != null) {
-			System.out.print(it.term().utf8ToString() + "\n"); 		//prints the terms
-
-		}
+	private static String[][] testSparseFreqDoubleArrayConversion(IndexReader reader, int docN, Terms fieldTerms) throws Exception {
+		String [][] B = new String[(int) fieldTerms.size()][docN];
 		System.out.println();
 		System.out.println();
 		if (fieldTerms != null && fieldTerms.size() != -1) {
@@ -162,9 +176,15 @@ public class CreateTermDocMatrix {
 		return B;
 	}
 
-	private static void saveArray(String[][] a) {
+	private static void saveArray(String[][] a, String type) {
 		try{
-			FileWriter newFile = new FileWriter("txdArray.txt");
+			String name;
+			if (type.equals("q")){
+				name = "tx1.txt";
+			}else{
+				name = "txdArray.txt";
+			}
+			FileWriter newFile = new FileWriter(name);
 			//Parse txt file
 			for (String[] x : a){
 				for (String y : x){
@@ -176,6 +196,17 @@ public class CreateTermDocMatrix {
 		} catch (Throwable err) {
 			err.printStackTrace();
 		}
+	}
+
+	private static Terms getTerms(IndexReader reader) throws Exception{
+		Terms fieldTerms = MultiFields.getTerms(reader, "name");   //the number of terms in the lexicon after analysis of the Field "title"
+		System.out.println("Terms:" + fieldTerms.size());
+		TermsEnum it = fieldTerms.iterator();						//iterates through the terms of the lexicon
+		while(it.next() != null) {
+			System.out.print(it.term().utf8ToString() + "\n"); 		//prints the terms
+
+		}
+		return fieldTerms;
 	}
 
 }
